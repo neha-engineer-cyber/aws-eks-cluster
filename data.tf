@@ -1,6 +1,6 @@
-data aws_subnets subnet_ids{
+data "aws_subnets" "subnet_ids"{
     filter{
-        name = "vpcid"
+        name = "vpc-id"
         values=[local.vpc_id]
     }
     

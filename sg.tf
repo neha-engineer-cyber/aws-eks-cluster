@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "rule3" {
     description = "Allow communication over nodeport from myip"
   
 }
-resource "aws_security_group_rule" "rule3" {
+resource "aws_security_group_rule" "rule4" {
     security_group_id = aws_security_group.worker_sg.id
     type = "egress"
     from_port = 0

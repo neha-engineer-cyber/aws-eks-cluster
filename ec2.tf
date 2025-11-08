@@ -1,6 +1,6 @@
 resource "aws_iam_instance_profile" "instance_profile" {
   name = "node_profile"
-  role = aws_iam_role.node_role
+  role = aws_iam_role.node_role.name
 }
 
 resource "aws_launch_template" "node_template" {
@@ -39,7 +39,9 @@ resource "aws_launch_template" "node_template" {
 data "template_file" "userdata"{
     template = file("${path.module}/userdata.sh")
     vars={
-
+        cluster-name = local.cluster_name
+        api-endpoint = aws_eks_cluster.cluster.endpoint
+        endpoint-ca = aws_eks_cluster.cluster.certificate_authority
     }
 }
 
