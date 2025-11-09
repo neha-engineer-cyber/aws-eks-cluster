@@ -54,3 +54,13 @@ resource "aws_iam_role_policy_attachment" "attach4" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
   role = aws_iam_role.node_role.name
 }
+
+resource "aws_iam_role_policy_attachment" "attach5" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+  role = aws_iam_role.node_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "attach6" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedEC2InstanceDefaultPolicy"
+  role = aws_iam_role.node_role.name
+}

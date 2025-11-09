@@ -6,7 +6,6 @@ resource "aws_iam_instance_profile" "instance_profile" {
 resource "aws_launch_template" "node_template" {
   image_id = "ami-01029a233dce1c0e9"
   instance_type = "t2.medium"
-  ebs_optimized = true
   block_device_mappings {
     device_name = "/dev/sdf"
 
@@ -41,7 +40,7 @@ data "template_file" "userdata"{
     vars={
         cluster-name = local.cluster_name
         api-endpoint = aws_eks_cluster.cluster.endpoint
-        endpoint-ca = aws_eks_cluster.cluster.certificate_authority
+        endpoint-ca = aws_eks_cluster.cluster.certificate_authority[0].data
     }
 }
 
