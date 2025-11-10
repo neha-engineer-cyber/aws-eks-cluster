@@ -38,7 +38,7 @@ resource "aws_launch_template" "node_template" {
 data "template_file" "userdata"{
     template = file("${path.module}/userdata.sh")
     vars={
-        cluster-name = local.cluster_name
+        cluster-name = aws_eks_cluster.cluster.name
         api-endpoint = aws_eks_cluster.cluster.endpoint
         endpoint-ca = aws_eks_cluster.cluster.certificate_authority[0].data
     }
