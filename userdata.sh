@@ -9,8 +9,7 @@ INSTANCE_ID=`curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.25
 WORKLOAD_LABEL="neha-httpd-cluster"
 
 mkdir /nodeadm-config
-cd /nodeadm-config
-touch nodeconfig.yaml
+touch /nodeadm-config/nodeconfig.yaml
 
 tee << EOF > /nodeadm-config/nodeconfig.yaml
 apiVersion: node.eks.aws/v1alpha1
